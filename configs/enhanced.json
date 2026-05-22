@@ -1,0 +1,12 @@
+{
+  "variant": "enhanced",
+  "hidden_dim": 128,
+  "k_values": "8,16,24",
+  "blocks": 3,
+  "stages": 2,
+  "patch_size": 2048,
+  "batch_size": 8,
+  "epochs": 120,
+  "lr": 0.001,
+  "weight_decay": 0.0001
+}

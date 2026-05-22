@@ -1,0 +1,44 @@
+# Large/generated competition artifacts
+data/
+outputs/
+submissions/
+checkpoints/
+logs/
+
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and local caches
+.venv/
+venv/
+env/
+.env
+.jittor*
+*.cache
+
+# Model/checkpoint/binary artifacts
+*.pkl
+*.pt
+*.pth
+*.bin
+*.onnx
+*.npy
+*.npz
+
+# Archives generated for transfer/submission
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
