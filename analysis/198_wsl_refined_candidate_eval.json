@@ -1,0 +1,272 @@
+{
+  "id": 198,
+  "name": "wsl_refined_candidate_eval",
+  "strict_submit_candidates": [
+    {
+      "candidate": "197a_w0075_top1_guard",
+      "zip": "submissions/197a_w0075_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.010981998406350613,
+      "changed_rows_vs_177b": 139807,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.027785424143075943,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.3393338645497959
+    },
+    {
+      "candidate": "197b_w0125_top1_guard",
+      "zip": "submissions/197b_w0125_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.017071904614567757,
+      "changed_rows_vs_177b": 130676,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.03387534245848656,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197c_w0150_top1_guard",
+      "zip": "submissions/197c_w0150_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.020034318789839745,
+      "changed_rows_vs_177b": 127797,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.03683774173259735,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197o_src_history_ge2",
+      "zip": "submissions/197o_src_history_ge2_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.017071904614567757,
+      "changed_rows_vs_177b": 130676,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.03387534245848656,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197p_src_history_ge3",
+      "zip": "submissions/197p_src_history_ge3_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.020034318789839745,
+      "changed_rows_vs_177b": 127797,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.03683774173259735,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197r_exclude_popularity_dominated",
+      "zip": "submissions/197r_exclude_popularity_dominated_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.018942609429359436,
+      "changed_rows_vs_177b": 120697,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.035745978355407715,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197w_baseline_logic_graph_neighbor_if_available",
+      "zip": "submissions/197w_baseline_logic_graph_neighbor_if_available_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.021276691928505898,
+      "changed_rows_vs_177b": 127231,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.03807871416211128,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197e_w010_conf_q90_top1_guard",
+      "zip": "submissions/197e_w010_conf_q90_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0015080070588737726,
+      "changed_rows_vs_177b": 14146,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.018311448395252228,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.6794940196245909
+    }
+  ],
+  "exploratory_submit_candidates": [
+    {
+      "candidate": "197d_w0200_top1_guard",
+      "zip": "submissions/197d_w0200_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.025972923263907433,
+      "changed_rows_vs_177b": 124235,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.04277632758021355,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    },
+    {
+      "candidate": "197q_src_history_ge5",
+      "zip": "submissions/197q_src_history_ge5_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.025861673057079315,
+      "changed_rows_vs_177b": 123702,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.042665060609579086,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 1.0
+    }
+  ],
+  "review_only_candidates": [
+    {
+      "candidate": "197f_w010_conf_q95_top1_guard",
+      "zip": "submissions/197f_w010_conf_q95_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0007618343806825578,
+      "changed_rows_vs_177b": 7106,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.01756526157259941,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.3427697935608525
+    },
+    {
+      "candidate": "197g_w010_conf_q975_top1_guard",
+      "zip": "submissions/197g_w010_conf_q975_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.00038608169415965676,
+      "changed_rows_vs_177b": 3577,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017189523205161095,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.17340639805321884
+    },
+    {
+      "candidate": "197h_w010_conf_q99_top1_guard",
+      "zip": "submissions/197h_w010_conf_q99_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.00015397074457723647,
+      "changed_rows_vs_177b": 1419,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.016957424581050873,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.06906108152574557
+    },
+    {
+      "candidate": "197i_w0125_conf_q95_top1_guard",
+      "zip": "submissions/197i_w0125_conf_q95_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0009408597252331674,
+      "changed_rows_vs_177b": 7020,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017744287848472595,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.4013699084110558
+    },
+    {
+      "candidate": "197j_w0150_conf_q95_top1_guard",
+      "zip": "submissions/197j_w0150_conf_q95_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0011193216778337955,
+      "changed_rows_vs_177b": 6959,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017922772094607353,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.46009472594459844
+    },
+    {
+      "candidate": "197k_w0200_conf_q95_top1_guard",
+      "zip": "submissions/197k_w0200_conf_q95_top1_guard_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0014759600162506104,
+      "changed_rows_vs_177b": 6883,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.01827939786016941,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.5780241720835368
+    },
+    {
+      "candidate": "197l_time_decay_0p90",
+      "zip": "submissions/197l_time_decay_0p90_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0008294964209198952,
+      "changed_rows_vs_177b": 8933,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017631735652685165,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.3881613069732983
+    },
+    {
+      "candidate": "197m_time_decay_0p95",
+      "zip": "submissions/197m_time_decay_0p95_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0008680846076458693,
+      "changed_rows_vs_177b": 8858,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017670292407274246,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.40008653588195636
+    },
+    {
+      "candidate": "197n_time_decay_0p98",
+      "zip": "submissions/197n_time_decay_0p98_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.000893982476554811,
+      "changed_rows_vs_177b": 8844,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017696166411042213,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.4085441588516037
+    },
+    {
+      "candidate": "197s_candidate_only_retrieval",
+      "zip": "submissions/197s_candidate_only_retrieval_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0010791309177875519,
+      "changed_rows_vs_177b": 8380,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017882540822029114,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.46446030592918397
+    },
+    {
+      "candidate": "197t_no_global_popularity",
+      "zip": "submissions/197t_no_global_popularity_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0010625560535117984,
+      "changed_rows_vs_177b": 8584,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.01786469854414463,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.46148535117059947
+    },
+    {
+      "candidate": "197u_baseline_logic_time_decay",
+      "zip": "submissions/197u_baseline_logic_time_decay_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0006024223403073847,
+      "changed_rows_vs_177b": 4185,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017405223101377487,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.2531199467691283
+    },
+    {
+      "candidate": "197v_baseline_logic_candidate_mask",
+      "zip": "submissions/197v_baseline_logic_candidate_mask_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.0001965619740076363,
+      "changed_rows_vs_177b": 1343,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.016999991610646248,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.08230815800254536
+    },
+    {
+      "candidate": "197x_final_balanced_wsl_retrieval",
+      "zip": "submissions/197x_final_balanced_wsl_retrieval_repack_checked/result.zip",
+      "dataset2_mad_vs_177b": 0.00046436188858933747,
+      "changed_rows_vs_177b": 3568,
+      "top1_change_vs_177b": 0.0,
+      "dataset2_mad_vs_143": 0.017267610877752304,
+      "top1_change_vs_143": 0.0,
+      "submit_score": 0.19938729619644582
+    }
+  ],
+  "rejected_candidates": [],
+  "best_submit_candidate": {
+    "candidate": "197a_w0075_top1_guard",
+    "zip": "submissions/197a_w0075_top1_guard_repack_checked/result.zip",
+    "dataset2_mad_vs_177b": 0.010981998406350613,
+    "changed_rows_vs_177b": 139807,
+    "top1_change_vs_177b": 0.0,
+    "dataset2_mad_vs_143": 0.027785424143075943,
+    "top1_change_vs_143": 0.0,
+    "submit_score": 1.3393338645497959
+  },
+  "backup_candidate": {
+    "candidate": "197b_w0125_top1_guard",
+    "zip": "submissions/197b_w0125_top1_guard_repack_checked/result.zip",
+    "dataset2_mad_vs_177b": 0.017071904614567757,
+    "changed_rows_vs_177b": 130676,
+    "top1_change_vs_177b": 0.0,
+    "dataset2_mad_vs_143": 0.03387534245848656,
+    "top1_change_vs_143": 0.0,
+    "submit_score": 1.0
+  },
+  "reason": "selected strict first, exploratory second"
+}

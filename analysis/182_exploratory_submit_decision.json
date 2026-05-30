@@ -1,0 +1,57 @@
+{
+  "id": 182,
+  "name": "exploratory_submit_decision",
+  "created_at": "2026-05-30T18:26:45+08:00",
+  "decision": "submit_exploratory_177b",
+  "submit_target": "submissions/177b_w010_top1_guard_repack_checked/result.zip",
+  "submit_mode": "exploratory_submit",
+  "preflight": {
+    "candidate": "177b_w010_top1_guard",
+    "dataset1_mad_vs_143": 0.0,
+    "dataset2_mad_vs_143": 0.01680343970656395,
+    "changed_rows_vs_143": 144713,
+    "top1_change_vs_143": 0.0,
+    "real_data_derived_signal": true,
+    "not_submission_output_only": true,
+    "not_score_shape_only": true,
+    "not_lgbm_takeover": true,
+    "not_router_expansion": true,
+    "validate_pass": true,
+    "zip_root_pass": true,
+    "zip_names": [
+      "dataset1.csv",
+      "dataset2.csv"
+    ],
+    "auto_eval_decision": "exploratory_submit"
+  },
+  "preflight_reasons": [],
+  "submit_script": "E:\\Jitter\\.tmp\\submit-agent\\submit_track1_177b_exploratory_monitor.js",
+  "auto_submit_attempted": true,
+  "online_status": "online_best",
+  "online_score": "1.2170530157111252",
+  "request_id": "2026053018275085120483",
+  "validate_output": "{'zip': 'submissions\\\\177b_w010_top1_guard_repack_checked\\\\result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+  "submit_result_json": "E:\\Jitter\\.tmp\\submit-agent\\submit_track1_177b_result.json",
+  "submitted_at": "2026-05-30 18:27:51",
+  "submit_result_status": "submitted_or_scored",
+  "submit_result_ok": true,
+  "latest_row": {
+    "requestId": "2026053018275085120483",
+    "attachment": "result.zip...",
+    "submitter": "赵奕程",
+    "submittedAt": "2026-05-30 18:27:51",
+    "status": "完成",
+    "score": "1.2170530157111252",
+    "info": "Evaluation completed successfully",
+    "raw": [
+      "2026053018275085120483",
+      "result.zip...",
+      "赵奕程",
+      "2026-05-30 18:27:51",
+      "完成",
+      "1.2170530157111252",
+      "Evaluation completed successfully",
+      "下载"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": 196,
+  "name": "177b_success_source_wsl",
+  "created_at": "2026-05-30T19:09:33+08:00",
+  "changed_rows_vs_143": 144713,
+  "dataset2_mad_vs_143": 0.016803449019789696,
+  "top1_change_vs_143": 0.0,
+  "top3_change_rate_vs_143": 0.16643201668622082,
+  "top5_change_rate_vs_143": 0.2530830400208578,
+  "raw168_top1_change_avoided_rows": 19870,
+  "by_src_history_count": [
+    {
+      "bucket": "src_history_q1",
+      "rows": 38319,
+      "changed_rows": 36422,
+      "mean_shift": 0.01674604043364525
+    },
+    {
+      "bucket": "src_history_q2",
+      "rows": 38258,
+      "changed_rows": 36162,
+      "mean_shift": 0.016870582476258278
+    },
+    {
+      "bucket": "src_history_q3",
+      "rows": 38397,
+      "changed_rows": 36234,
+      "mean_shift": 0.0168947484344244
+    },
+    {
+      "bucket": "src_history_q4",
+      "rows": 38446,
+      "changed_rows": 35895,
+      "mean_shift": 0.016702666878700256
+    }
+  ],
+  "by_time": [
+    {
+      "bucket": "time_q1",
+      "rows": 38171,
+      "changed_rows": 36517,
+      "mean_shift": 0.016998155042529106
+    },
+    {
+      "bucket": "time_q2",
+      "rows": 38417,
+      "changed_rows": 35932,
+      "mean_shift": 0.01681951992213726
+    },
+    {
+      "bucket": "time_q3",
+      "rows": 38348,
+      "changed_rows": 35961,
+      "mean_shift": 0.016765739768743515
+    },
+    {
+      "bucket": "time_q4",
+      "rows": 38484,
+      "changed_rows": 36303,
+      "mean_shift": 0.016631843522191048
+    }
+  ],
+  "by_retrieval_margin": [
+    {
+      "bucket": "retrieval_margin_q1",
+      "rows": 38352,
+      "changed_rows": 35829,
+      "mean_shift": 0.016521234065294266
+    },
+    {
+      "bucket": "retrieval_margin_q2",
+      "rows": 38357,
+      "changed_rows": 36092,
+      "mean_shift": 0.016693295910954475
+    },
+    {
+      "bucket": "retrieval_margin_q3",
+      "rows": 38354,
+      "changed_rows": 36154,
+      "mean_shift": 0.016782378777861595
+    },
+    {
+      "bucket": "retrieval_margin_q4",
+      "rows": 38357,
+      "changed_rows": 36638,
+      "mean_shift": 0.017216835170984268
+    }
+  ],
+  "gain_source": "top1_guarded real-data retrieval score redistribution; raw 168 top1 errors are avoided while non-top1 candidate ranks move broadly",
+  "top1_guard_is_key": true,
+  "can_amplify": "cautiously; only top1_guard or high-confidence/time/history masks should be explored",
+  "recommended_refinement": "generate 197 around w=0.075..0.20 with top1 guard, confidence masks, time decay, source-history buckets, and candidate-mask variants"
+}

@@ -1,0 +1,145 @@
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:11:import jittor as jt
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:16:from jittor_geometric.data import TemporalData
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:17:from jittor_geometric.nn.models.craft import CRAFT
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:18:from jittor_geometric.dataloader.temporal_dataloader import TemporalDataLoader, get_neighbor_sampler
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:25:def test_val(model, loader, full_neighbor_sampler, num_neighbors):
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:26:    model.eval()
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:30:        src = jt.array(batch_data.src)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:31:        dst = jt.array(batch_data.dst)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:33:        neg_dst = jt.array(batch_data.neg_dst)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:35:        src_neighb_seq, _, src_neighb_interact_times = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:36:            node_ids=src.numpy(), node_interact_times=t.numpy(), num_neighbors=num_neighbors)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:37:        neighbor_num = (src_neighb_seq != 0).sum(axis=1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:39:        pos_item = jt.Var(dst).unsqueeze(1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:40:        neg_item = jt.Var(neg_dst).unsqueeze(1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:41:        test_dst = jt.cat([pos_item, neg_item], dim=1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:43:        dst_last_neighbor, _, dst_last_update_time = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:44:            node_ids=test_dst.flatten().numpy(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:45:            node_interact_times=np.broadcast_to(t.numpy()[:,np.newaxis], (len(t), test_dst.shape[1])).flatten(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:47:        dst_last_update_time = np.array(dst_last_update_time).reshape(len(test_dst), -1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:48:        dst_last_update_time[dst_last_neighbor.reshape(len(test_dst),-1)==0] = -100000
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:49:        dst_last_update_time = jt.Var(dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:51:        pos_score, neg_score = model.predict(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:52:            src_neighb_seq=jt.Var(src_neighb_seq),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:53:            src_neighb_seq_len=jt.Var(neighbor_num),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:54:            src_neighb_interact_times=jt.Var(src_neighb_interact_times),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:55:            cur_pred_times=jt.Var(t),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:56:            test_dst=test_dst,
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:57:            dst_last_update_times=dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:66:def train(model, optimizer, train_loader, val_loader, full_neighbor_sampler, num_neighbors, num_epochs, save_path, dataset_name, early_stop_patience=10):
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:71:        model.train()
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:72:        train_losses = []
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:73:        train_tqdm = tqdm(train_loader, ncols=120, desc=f'Epoch {epoch+1}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:75:        for batch_idx, batch_data in enumerate(train_tqdm):
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:76:            src = jt.array(batch_data.src)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:77:            dst = jt.array(batch_data.dst)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:79:            neg_dst = jt.array(batch_data.neg_dst)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:81:            src_neighb_seq, _, src_neighb_interact_times = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:82:                node_ids=src.numpy(), node_interact_times=t.numpy(), num_neighbors=num_neighbors)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:83:            neighbor_num = (src_neighb_seq != 0).sum(axis=1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:88:            pos_item = jt.Var(dst).unsqueeze(-1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:89:            neg_item = jt.Var(neg_dst).unsqueeze(-1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:90:            test_dst = jt.cat([pos_item, neg_item], dim=-1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:92:            dst_last_neighbor, _, dst_last_update_time = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:93:                node_ids=test_dst.flatten().numpy(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:94:                node_interact_times=np.broadcast_to(t.numpy()[:,np.newaxis], (len(t), test_dst.shape[1])).flatten(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:96:            dst_last_update_time = np.array(dst_last_update_time).reshape(len(test_dst), -1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:97:            dst_last_update_time[dst_last_neighbor.reshape(len(test_dst),-1)==0] = -100000
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:98:            dst_last_update_time = jt.Var(dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:100:            loss, _, _ = model.calculate_loss(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:101:                src_neighb_seq=jt.Var(src_neighb_seq),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:102:                src_neighb_seq_len=jt.Var(neighbor_num),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:103:                src_neighb_interact_times=jt.Var(src_neighb_interact_times),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:104:                cur_pred_times=jt.Var(t),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:105:                test_dst=test_dst,
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:106:                dst_last_update_times=dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:111:            train_losses.append(loss.item())
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:112:            train_tqdm.set_description(f'Epoch {epoch+1}, loss: {loss.item():.4f}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:114:        print(f'Epoch {epoch+1}, Train Loss: {np.mean(train_losses):.4f}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:115:        val_res = test_val(model, val_loader, full_neighbor_sampler, num_neighbors)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:123:            jt.save(model.state_dict(), f'{save_path}/{dataset_name}_CRAFT_best.pkl')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:124:            print(f'  -> New best AP: {best_ap:.6f}, model saved!')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:129:        # Also save latest model
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:130:        jt.save(model.state_dict(), f'{save_path}/{dataset_name}_CRAFT.pkl')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:140:def test_competition(model, test_src, test_time, test_candidates, full_neighbor_sampler, num_neighbors, batch_size=200):
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:141:    model.eval()
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:143:    num_samples = len(test_src)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:151:        batch_src = test_src[start:end]
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:152:        batch_time = test_time[start:end]
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:153:        batch_cand = test_candidates[start:end]
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:155:        src_neighb_seq, _, src_neighb_interact_times = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:156:            node_ids=batch_src, node_interact_times=batch_time, num_neighbors=num_neighbors)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:157:        neighbor_num = (src_neighb_seq != 0).sum(axis=1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:159:        test_dst = jt.Var(batch_cand)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:161:        dst_last_neighbor, _, dst_last_update_time = full_neighbor_sampler.get_historical_neighbors_left(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:162:            node_ids=test_dst.flatten().numpy(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:163:            node_interact_times=np.broadcast_to(batch_time[:,np.newaxis], (len(batch_time), test_dst.shape[1])).flatten(),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:165:        dst_last_update_time = np.array(dst_last_update_time).reshape(len(test_dst), -1)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:166:        dst_last_update_time[dst_last_neighbor.reshape(len(test_dst),-1)==0] = -100000
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:167:        dst_last_update_time = jt.Var(dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:169:        src_neighb_seq_adj = jt.Var(src_neighb_seq) - model.dst_min_idx + 1
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:170:        test_dst_adj = test_dst - model.dst_min_idx + 1
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:171:        src_neighb_seq_adj = jt.where(src_neighb_seq_adj < 0, jt.zeros_like(src_neighb_seq_adj), src_neighb_seq_adj)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:173:        logits = model.forward(src_neighb_seq_adj, jt.Var(neighbor_num), jt.Var(src_neighb_interact_times),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:174:                              jt.Var(batch_time), test_dst=test_dst_adj, dst_last_update_times=dst_last_update_time)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:182:parser.add_argument('--dataset', type=str, required=True, help='Dataset name')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:184:parser.add_argument('--save_dir', type=str, default='./saved_models', help='Model save directory')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:186:parser.add_argument('--epochs', type=int, default=100, help='Number of training epochs')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:195:print(f'CRAFT Competition - Dataset: {args.dataset}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:199:df = pd.read_csv(f'{args.data_dir}/{args.dataset}/train.csv')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:202:src_np = df['src'].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:203:dst_np = df['dst'].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:204:t_np = df['time'].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:207:test_src = test_df['src'].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:208:test_time = test_df['time'].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:209:test_candidates = test_df.iloc[:, 2:].values.astype(np.int32)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:216:num_train = num_total - num_val
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:218:train_data = TemporalData(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:219:    src=jt.Var(src_np[:num_train]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:220:    dst=jt.Var(dst_np[:num_train]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:221:    t=jt.Var(t_np[:num_train]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:222:    edge_ids=jt.Var(edge_ids_np[:num_train])
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:225:    src=jt.Var(src_np[num_train:]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:226:    dst=jt.Var(dst_np[num_train:]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:227:    t=jt.Var(t_np[num_train:]),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:228:    edge_ids=jt.Var(edge_ids_np[num_train:])
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:231:    src=jt.Var(src_np),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:232:    dst=jt.Var(dst_np),
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:237:train_loader = TemporalDataLoader(train_data, batch_size=args.batch_size, neg_sampling_ratio=1.0)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:243:max_node = max(int(src_np.max()), int(dst_np.max()), int(test_candidates.max()))
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:245:dst_min = min(int(dst_np.min()), int(test_candidates.min()))
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:246:src_min = int(src_np.min())
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:248:print(f'Node size: {node_size}, Src min: {src_min}, Dst min: {dst_min}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:251:model = CRAFT(
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:254:    max_seq_length=num_neighbors, loss_type='BPR', use_pos=True, input_cat_time_intervals=False,
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:255:    output_cat_time_intervals=True, output_cat_repeat_times=True, num_output_layer=1,
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:258:model.set_min_idx(src_min, dst_min)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:259:optimizer = jt.nn.Adam(list(model.parameters()), lr=0.0001)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:266:best_ap = train(model, optimizer, train_loader, val_loader, full_neighbor_sampler, num_neighbors, args.epochs, save_path, args.dataset, args.early_stop)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:268:# Load best model
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:269:print('\nGenerating predictions using best model...')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:270:best_model_path = f'{save_path}/{args.dataset}_CRAFT_best.pkl'
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:271:if os.path.exists(best_model_path):
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:272:    model.load_state_dict(jt.load(best_model_path))
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:273:    print(f'Loaded best model from {best_model_path}')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:275:    model.load_state_dict(jt.load(f'{save_path}/{args.dataset}_CRAFT.pkl'))
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:276:    print(f'Best model not found, using latest model')
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/main.py:279:scores = test_competition(model, test_src, test_time, test_candidates, full_neighbor_sampler, num_neighbors, args.batch_size)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:26:│   │   ├── train.csv          # 训练数据
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:29:│       ├── train.csv
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:35:### 训练数据 (train.csv)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:39:| src | int | 源节点 ID |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:40:| dst | int | 目标节点 ID |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:41:| time | int | 时间戳 |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:45:src,dst,time
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:55:| src | int | 源节点 ID |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:56:| time | int | 时间戳 |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:57:| c1~c100 | int | 100 个候选目标节点 |
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:61:src,time,c1,c2,c3,...,c100
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:80:- 概率值顺序与 test.csv 中 c1~c100 的顺序一一对应
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:102:MRR = (1/N) × Σ(1/rank_i)
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/craft_baseline/readme.md:105:其中 `rank_i` 是第 i 个测试样本中正样本按概率降序排列后的排名位置。
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/data_A/dataset1/test.csv:1:src,time,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,c38,c39,c40,c41,c42,c43,c44,c45,c46,c47,c48,c49,c50,c51,c52,c53,c54,c55,c56,c57,c58,c59,c60,c61,c62,c63,c64,c65,c66,c67,c68,c69,c70,c71,c72,c73,c74,c75,c76,c77,c78,c79,c80,c81,c82,c83,c84,c85,c86,c87,c88,c89,c90,c91,c92,c93,c94,c95,c96,c97,c98,c99,c100
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/data_A/dataset1/train.csv:1:src,dst,time
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/data_A/dataset2/test.csv:1:src,time,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,c21,c22,c23,c24,c25,c26,c27,c28,c29,c30,c31,c32,c33,c34,c35,c36,c37,c38,c39,c40,c41,c42,c43,c44,c45,c46,c47,c48,c49,c50,c51,c52,c53,c54,c55,c56,c57,c58,c59,c60,c61,c62,c63,c64,c65,c66,c67,c68,c69,c70,c71,c72,c73,c74,c75,c76,c77,c78,c79,c80,c81,c82,c83,c84,c85,c86,c87,c88,c89,c90,c91,c92,c93,c94,c95,c96,c97,c98,c99,c100
+/mnt/e/Jitter/track1_aggressive_wsl/official_data_recheck/extracted_wsl/data_A/dataset2/train.csv:1:src,dst,time,split

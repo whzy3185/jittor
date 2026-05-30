@@ -1,0 +1,44 @@
+{
+  "id": 184,
+  "name": "jittor_baseline_smoke_test",
+  "created_at": "2026-05-30T18:26:02+08:00",
+  "baseline_dir": "official_data_recheck\\extracted\\craft_baseline",
+  "jittor_available": false,
+  "jittor_geometric_available": false,
+  "baseline_py_compile_ok": true,
+  "smoke_possible_without_install": false,
+  "generated_submission": false,
+  "zip": "",
+  "auto_eval_decision": "do_not_submit",
+  "results": [
+    {
+      "cmd": "python -c import sys; print(sys.version)",
+      "returncode": 0,
+      "stdout": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]\n",
+      "stderr": "",
+      "ok": true
+    },
+    {
+      "cmd": "python -c import jittor as jt; print('jittor', jt.__version__)",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import jittor as jt; print('jittor', jt.__version__)\n    ^^^^^^^^^^^^^^^^^^^\nModuleNotFoundError: No module named 'jittor'\n",
+      "ok": false
+    },
+    {
+      "cmd": "python -c import jittor_geometric; print('jittor_geometric ok')",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import jittor_geometric; print('jittor_geometric ok')\n    ^^^^^^^^^^^^^^^^^^^^^^^\nModuleNotFoundError: No module named 'jittor_geometric'\n",
+      "ok": false
+    },
+    {
+      "cmd": "python -m py_compile E:\\Jitter\\track1_aggressive_wsl\\official_data_recheck\\extracted\\craft_baseline\\main.py",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "ok": true
+    }
+  ],
+  "reason": "Current Python environment cannot run official baseline smoke fully; missing Jittor/JittorGeometric or syntax precheck failed."
+}

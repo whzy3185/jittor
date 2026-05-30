@@ -1,0 +1,44 @@
+{
+  "id": 200,
+  "name": "wsl_final_submit_decision",
+  "created_at": "2026-05-30T19:24:16+08:00",
+  "decision": "submit_199",
+  "submit_target": "submissions/199_final_wsl_candidate_repack_checked/result.zip",
+  "current_best_before_submit": {
+    "name": "177b_w010_top1_guard",
+    "online_score": 1.2170530157111252
+  },
+  "auto_submit_attempted": true,
+  "online_status": "regressed_or_not_best",
+  "online_score": "1.2168948054252828",
+  "request_id": "2026053019255289888115",
+  "reasons": [],
+  "zip_names": [
+    "dataset1.csv",
+    "dataset2.csv"
+  ],
+  "validate_output": "{'zip': 'submissions/199_final_wsl_candidate_repack_checked/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+  "submit_script": "/mnt/e/Jitter/.tmp/submit-agent/submit_track1_199_monitor.js",
+  "submit_result_json": "/mnt/e/Jitter/.tmp/submit-agent/submit_track1_199_result.json",
+  "submitted_at": "2026-05-30 19:25:52",
+  "latest_row": {
+    "requestId": "2026053019255289888115",
+    "attachment": "result.zip...",
+    "submitter": "赵奕程",
+    "submittedAt": "2026-05-30 19:25:52",
+    "status": "完成",
+    "score": "1.2168948054252828",
+    "info": "Evaluation completed successfully",
+    "raw": [
+      "2026053019255289888115",
+      "result.zip...",
+      "赵奕程",
+      "2026-05-30 19:25:52",
+      "完成",
+      "1.2168948054252828",
+      "Evaluation completed successfully",
+      "下载"
+    ]
+  },
+  "submit_result_ok": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": 193,
+  "name": "official_craft_baseline_wsl_audit",
+  "created_at": "2026-05-30T19:08:51+08:00",
+  "files": [
+    "official_data_recheck/extracted_wsl/craft_baseline/main.py",
+    "official_data_recheck/extracted_wsl/craft_baseline/readme.md",
+    "official_data_recheck/extracted_wsl/craft_baseline/requirements.txt",
+    "official_data_recheck/extracted_wsl/data_A/dataset1/test.csv",
+    "official_data_recheck/extracted_wsl/data_A/dataset1/train.csv",
+    "official_data_recheck/extracted_wsl/data_A/dataset2/test.csv",
+    "official_data_recheck/extracted_wsl/data_A/dataset2/train.csv"
+  ],
+  "baseline_uses_jittor": true,
+  "baseline_uses_jittor_geometric": true,
+  "has_train_script": true,
+  "has_predict_script": true,
+  "has_model_script": true,
+  "has_dataset_script": true,
+  "has_candidate_c1_c100_logic": true,
+  "has_graph_logic": true,
+  "has_time_logic": true,
+  "has_submission_generation": true,
+  "should_return_to_jittor_framework": "true"
+}

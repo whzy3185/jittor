@@ -1,0 +1,44 @@
+{
+  "id": 191,
+  "name": "wsl_only_environment",
+  "created_at": "2026-05-30T19:08:21+08:00",
+  "pwd": "/mnt/e/Jitter/track1_aggressive_wsl",
+  "python_executable": "/mnt/e/Jitter/.venv_wsl_cpu/bin/python",
+  "env": {
+    "nvcc_path": "",
+    "cache_path": "/mnt/e/Jitter/.jittor_wsl_cpu_cache_cpuonly",
+    "use_cuda": "0"
+  },
+  "checks": {
+    "system": {
+      "cmd": "pwd; which python; python --version; uname -a; gcc --version | head -1 || true; g++ --version | head -1 || true",
+      "ok": true,
+      "returncode": 0,
+      "stdout": "/mnt/e/Jitter/track1_aggressive_wsl\n/mnt/e/Jitter/.venv_wsl_cpu/bin/python\nPython 3.12.3\nLinux muelsyse 6.6.114.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Mon Dec  1 20:46:23 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux\ngcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\ng++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\n",
+      "stderr": ""
+    },
+    "validate_177b": {
+      "cmd": "python validate_result_zip.py --zip submissions/177b_w010_top1_guard_repack_checked/result.zip",
+      "ok": true,
+      "returncode": 0,
+      "stdout": "{'zip': 'submissions/177b_w010_top1_guard_repack_checked/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}\n",
+      "stderr": ""
+    },
+    "validate_143": {
+      "cmd": "python validate_result_zip.py --zip submissions/143_score_shape_rebuild_repack_checked/result.zip",
+      "ok": true,
+      "returncode": 0,
+      "stdout": "{'zip': 'submissions/143_score_shape_rebuild_repack_checked/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}\n",
+      "stderr": ""
+    }
+  },
+  "summary": {
+    "wsl_generated": true,
+    "pwd_ok": true,
+    "python_from_wsl_venv": true,
+    "use_cuda_is_0": true,
+    "cache_path_ok": true,
+    "validate_177b_pass": true,
+    "validate_143_pass": true
+  }
+}
