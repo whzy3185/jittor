@@ -1,6 +1,6 @@
 {
   "remote": "origin\tgit@github.com:whzy3185/jittor.git (fetch)\norigin\tgit@github.com:whzy3185/jittor.git (push)\n",
-  "branch_before": "main",
+  "branch_before": "track1-v2-restart",
   "large_files_blocked": true,
   "large_files": [
     "./data/cache/v2_dataset2_feature_bank.npz",

@@ -1,6 +1,6 @@
 # Evidence Registry
 
-- updated_at: 2026-05-31T16:02:37+08:00
+- updated_at: 2026-05-31T16:18:27+08:00
 
 ## GitHub Docs: About large files on GitHub
 
@@ -33,6 +33,70 @@
 - used_for: graph learning route audit
 - claim_supported: JittorGeometric supports graph machine learning experiments in the Jittor ecosystem
 - limitations: not proof of leaderboard improvement
+
+## GraphMixer: An Efficient Graph Representation Learning Framework for Temporal Graphs
+
+- source_type: paper
+- url_or_path: https://arxiv.org/abs/2302.11636
+- used_for: temporal graph route evidence
+- claim_supported: temporal graph signals can be modeled with efficient neighbor and time-feature mixing
+- limitations: directional evidence only; not implemented as primary V2 candidate
+
+## TPNet / temporal path style dynamic graph evidence
+
+- source_type: paper
+- url_or_path: https://arxiv.org/search/?query=TPNet+temporal+graph&searchtype=all
+- used_for: temporal path and sequence route evidence
+- claim_supported: temporal path/network methods are relevant to dynamic interaction ranking
+- limitations: placeholder registry entry; exact implementation route requires paper-specific audit before use
+
+## TNCN / temporal neighborhood contrastive evidence
+
+- source_type: paper
+- url_or_path: https://arxiv.org/search/?query=TNCN+temporal+graph&searchtype=all
+- used_for: temporal neighborhood route evidence
+- claim_supported: temporal neighborhood consistency is a plausible feature family
+- limitations: placeholder registry entry; not sufficient alone for implementation
+
+## DyGLib / DyGFormer dynamic graph library
+
+- source_type: repo_doc
+- url_or_path: https://github.com/yule-BUAA/DyGLib
+- used_for: dynamic graph model route audit
+- claim_supported: DyGFormer/DyGLib provide references for temporal graph learning pipelines
+- limitations: external PyTorch library; cannot replace Jittor mainline directly
+
+## TGB / EdgeBank temporal graph benchmark baselines
+
+- source_type: paper
+- url_or_path: https://arxiv.org/abs/2307.01026
+- used_for: simple temporal memory baseline route
+- claim_supported: memory/recent-history baselines such as EdgeBank are competitive references for temporal link prediction
+- limitations: benchmark framing differs from this candidate-list competition
+
+## LightGBM learning to rank documentation
+
+- source_type: official_doc
+- url_or_path: https://lightgbm.readthedocs.io/en/latest/Parameters.html
+- used_for: 004_dual_lgbm_ranker route
+- claim_supported: LightGBM supports ranking objectives such as lambdarank
+- limitations: auxiliary expert only; LGBM takeover previously regressed
+
+## CatBoost ranking documentation
+
+- source_type: official_doc
+- url_or_path: https://catboost.ai/docs/en/concepts/loss-functions-ranking
+- used_for: 005_dual_catboost_ranker route audit
+- claim_supported: CatBoost supports ranking losses such as YetiRank and PairLogit
+- limitations: local CatBoost package may be unavailable; route is blocked until dependency exists
+
+## XGBoost learning to rank documentation
+
+- source_type: official_doc
+- url_or_path: https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html
+- used_for: future ranking route audit
+- claim_supported: XGBoost supports learning-to-rank workflows
+- limitations: not part of current Jittor mainline and local package may be unavailable
 
 ## Temporal Graph Networks for Deep Learning on Dynamic Graphs
 
@@ -81,4 +145,12 @@
 - used_for: guard retrieval top1 changes
 - claim_supported: raw real retrieval needs guards before submission
 - limitations: risk heuristic, not label proof
+
+## 125 LGBM takeover regressed
+
+- source_type: local_experiment
+- url_or_path: ONLINE_FEEDBACK_125_CN.md
+- used_for: limit LGBM to auxiliary/ranking expert route
+- claim_supported: large LGBM fusion fell to 1.199824283554553 and should not take over dataset2
+- limitations: rejects takeover behavior, not all LGBM-derived features
 

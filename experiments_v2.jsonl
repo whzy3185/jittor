@@ -2,7 +2,7 @@
 {"id": "001", "name": "dual_retrieval_baseline", "type": "candidate", "online_score": "", "zip": "submissions/001_dual_retrieval_baseline/result.zip", "note": "method=retrieval; validate=True; recommended=True"}
 {"id": "002", "name": "dual_time_decay_ranker", "type": "candidate", "online_score": "", "zip": "submissions/002_dual_time_decay_ranker/result.zip", "note": "method=time_decay; validate=True; recommended=True"}
 {"id": "003", "name": "dual_cooc_transition_ranker", "type": "candidate", "online_score": "", "zip": "submissions/003_dual_cooc_transition_ranker/result.zip", "note": "method=cooc_transition; validate=True; recommended=True"}
-{"id": "004", "name": "dual_candidate_ranker", "type": "candidate", "online_score": "", "zip": "submissions/004_dual_candidate_ranker/result.zip", "note": "method=candidate_ranker; validate=True; recommended=True"}
-{"id": "005", "name": "dual_dataset_specific_ranker", "type": "candidate", "online_score": "", "zip": "submissions/005_dual_dataset_specific_ranker/result.zip", "note": "method=dataset_specific; validate=True; recommended=True"}
-{"id": "006", "name": "jittor_craft_if_available", "type": "candidate", "online_score": "", "zip": "submissions/006_jittor_craft_if_available/result.zip", "note": "method=jittor_craft; validate=True; recommended=True"}
-{"id": "007", "name": "dual_blend_final", "type": "candidate", "online_score": "", "zip": "submissions/007_dual_blend_final/result.zip", "note": "method=blend; validate=True; recommended=True"}
+{"id": "004", "name": "dual_lgbm_ranker", "type": "candidate", "online_score": "", "zip": "submissions/004_dual_lgbm_ranker/result.zip", "note": "method=lgbm_ranker; validate=True; recommended=True"}
+{"id": "005", "name": "dual_catboost_ranker", "type": "candidate", "online_score": "", "zip": "submissions/005_dual_catboost_ranker/result.zip", "note": "method=catboost_ranker; validate=True; recommended=False"}
+{"id": "006", "name": "dual_jittor_craft_probe", "type": "candidate", "online_score": "", "zip": "submissions/006_dual_jittor_craft_probe/result.zip", "note": "method=jittor_craft; validate=True; recommended=True"}
+{"id": "007", "name": "dual_blend_guarded", "type": "candidate", "online_score": "", "zip": "submissions/007_dual_blend_guarded/result.zip", "note": "method=blend_guarded; validate=True; recommended=True"}

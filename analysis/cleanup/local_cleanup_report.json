@@ -1,20 +1,7 @@
 {
-  "dry_run": false,
-  "actions": [
-    {
-      "path": "scripts/__pycache__",
-      "action": "delete_cache"
-    },
-    {
-      "path": "workspace_baseline_wsl/__pycache__",
-      "action": "delete_cache"
-    },
-    {
-      "path": "official_data_recheck/extracted/craft_baseline/__pycache__",
-      "action": "delete_cache"
-    }
-  ],
-  "total_files_after_scan": 1389,
-  "total_size_bytes_after_scan": 37670627154,
+  "dry_run": true,
+  "actions": [],
+  "total_files_after_scan": 1416,
+  "total_size_bytes_after_scan": 38809738964,
   "protected_files_intact": true
 }

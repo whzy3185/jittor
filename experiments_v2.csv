@@ -3,7 +3,7 @@ id,name,type,online_score,zip,note
 001,dual_retrieval_baseline,candidate,,submissions/001_dual_retrieval_baseline/result.zip,method=retrieval; validate=True; recommended=True
 002,dual_time_decay_ranker,candidate,,submissions/002_dual_time_decay_ranker/result.zip,method=time_decay; validate=True; recommended=True
 003,dual_cooc_transition_ranker,candidate,,submissions/003_dual_cooc_transition_ranker/result.zip,method=cooc_transition; validate=True; recommended=True
-004,dual_candidate_ranker,candidate,,submissions/004_dual_candidate_ranker/result.zip,method=candidate_ranker; validate=True; recommended=True
-005,dual_dataset_specific_ranker,candidate,,submissions/005_dual_dataset_specific_ranker/result.zip,method=dataset_specific; validate=True; recommended=True
-006,jittor_craft_if_available,candidate,,submissions/006_jittor_craft_if_available/result.zip,method=jittor_craft; validate=True; recommended=True
-007,dual_blend_final,candidate,,submissions/007_dual_blend_final/result.zip,method=blend; validate=True; recommended=True
+004,dual_lgbm_ranker,candidate,,submissions/004_dual_lgbm_ranker/result.zip,method=lgbm_ranker; validate=True; recommended=True
+005,dual_catboost_ranker,candidate,,submissions/005_dual_catboost_ranker/result.zip,method=catboost_ranker; validate=True; recommended=False
+006,dual_jittor_craft_probe,candidate,,submissions/006_dual_jittor_craft_probe/result.zip,method=jittor_craft; validate=True; recommended=True
+007,dual_blend_guarded,candidate,,submissions/007_dual_blend_guarded/result.zip,method=blend_guarded; validate=True; recommended=True

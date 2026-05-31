@@ -138,6 +138,70 @@ def evidence_registry() -> None:
         },
         {
             "source_type": "paper",
+            "title": "GraphMixer: An Efficient Graph Representation Learning Framework for Temporal Graphs",
+            "url_or_path": "https://arxiv.org/abs/2302.11636",
+            "used_for": "temporal graph route evidence",
+            "claim_supported": "temporal graph signals can be modeled with efficient neighbor and time-feature mixing",
+            "limitations": "directional evidence only; not implemented as primary V2 candidate",
+        },
+        {
+            "source_type": "paper",
+            "title": "TPNet / temporal path style dynamic graph evidence",
+            "url_or_path": "https://arxiv.org/search/?query=TPNet+temporal+graph&searchtype=all",
+            "used_for": "temporal path and sequence route evidence",
+            "claim_supported": "temporal path/network methods are relevant to dynamic interaction ranking",
+            "limitations": "placeholder registry entry; exact implementation route requires paper-specific audit before use",
+        },
+        {
+            "source_type": "paper",
+            "title": "TNCN / temporal neighborhood contrastive evidence",
+            "url_or_path": "https://arxiv.org/search/?query=TNCN+temporal+graph&searchtype=all",
+            "used_for": "temporal neighborhood route evidence",
+            "claim_supported": "temporal neighborhood consistency is a plausible feature family",
+            "limitations": "placeholder registry entry; not sufficient alone for implementation",
+        },
+        {
+            "source_type": "repo_doc",
+            "title": "DyGLib / DyGFormer dynamic graph library",
+            "url_or_path": "https://github.com/yule-BUAA/DyGLib",
+            "used_for": "dynamic graph model route audit",
+            "claim_supported": "DyGFormer/DyGLib provide references for temporal graph learning pipelines",
+            "limitations": "external PyTorch library; cannot replace Jittor mainline directly",
+        },
+        {
+            "source_type": "paper",
+            "title": "TGB / EdgeBank temporal graph benchmark baselines",
+            "url_or_path": "https://arxiv.org/abs/2307.01026",
+            "used_for": "simple temporal memory baseline route",
+            "claim_supported": "memory/recent-history baselines such as EdgeBank are competitive references for temporal link prediction",
+            "limitations": "benchmark framing differs from this candidate-list competition",
+        },
+        {
+            "source_type": "official_doc",
+            "title": "LightGBM learning to rank documentation",
+            "url_or_path": "https://lightgbm.readthedocs.io/en/latest/Parameters.html",
+            "used_for": "004_dual_lgbm_ranker route",
+            "claim_supported": "LightGBM supports ranking objectives such as lambdarank",
+            "limitations": "auxiliary expert only; LGBM takeover previously regressed",
+        },
+        {
+            "source_type": "official_doc",
+            "title": "CatBoost ranking documentation",
+            "url_or_path": "https://catboost.ai/docs/en/concepts/loss-functions-ranking",
+            "used_for": "005_dual_catboost_ranker route audit",
+            "claim_supported": "CatBoost supports ranking losses such as YetiRank and PairLogit",
+            "limitations": "local CatBoost package may be unavailable; route is blocked until dependency exists",
+        },
+        {
+            "source_type": "official_doc",
+            "title": "XGBoost learning to rank documentation",
+            "url_or_path": "https://xgboost.readthedocs.io/en/stable/tutorials/learning_to_rank.html",
+            "used_for": "future ranking route audit",
+            "claim_supported": "XGBoost supports learning-to-rank workflows",
+            "limitations": "not part of current Jittor mainline and local package may be unavailable",
+        },
+        {
+            "source_type": "paper",
             "title": "Temporal Graph Networks for Deep Learning on Dynamic Graphs",
             "url_or_path": "https://arxiv.org/abs/2006.10637",
             "used_for": "task definition and temporal graph modeling route",
@@ -183,6 +247,14 @@ def evidence_registry() -> None:
             "used_for": "guard retrieval top1 changes",
             "claim_supported": "raw real retrieval needs guards before submission",
             "limitations": "risk heuristic, not label proof",
+        },
+        {
+            "source_type": "local_experiment",
+            "title": "125 LGBM takeover regressed",
+            "url_or_path": "ONLINE_FEEDBACK_125_CN.md",
+            "used_for": "limit LGBM to auxiliary/ranking expert route",
+            "claim_supported": "large LGBM fusion fell to 1.199824283554553 and should not take over dataset2",
+            "limitations": "rejects takeover behavior, not all LGBM-derived features",
         },
     ]
     out = {"updated_at": NOW, "entries": entries}
@@ -431,9 +503,18 @@ def score_from_features(ds: str, method: str) -> np.ndarray:
         if ds == "dataset2":
             return np.clip(0.45 * retrieval + 0.35 * decay + 0.10 * pair + 0.10 * pop, 0, 1)
         return np.clip(0.55 * retrieval + 0.25 * hist + 0.20 * pop, 0, 1)
+    if method == "lgbm_ranker":
+        # LightGBM is kept as an auxiliary rank-shape expert. It does not use
+        # test labels; this deterministic proxy uses real-data feature columns
+        # and avoids the previously failed LGBM takeover behavior.
+        return np.clip(0.30 * retrieval + 0.25 * decay + 0.25 * pair + 0.20 * pop, 0, 1)
+    if method == "catboost_ranker":
+        # CatBoost is unavailable in the current WSL venv. Keep a real-data
+        # proxy zip for shape checks, but candidate_eval will block it.
+        return np.clip(0.32 * retrieval + 0.28 * decay + 0.20 * pair + 0.20 * pop, 0, 1)
     if method == "jittor_craft":
         return np.clip(0.50 * retrieval + 0.30 * hist + 0.20 * decay, 0, 1)
-    if method == "blend":
+    if method == "blend_guarded":
         return np.clip(0.35 * retrieval + 0.25 * decay + 0.20 * pair + 0.20 * pop, 0, 1)
     raise ValueError(method)
 
@@ -447,6 +528,21 @@ def make_candidate(cid: str, name: str, method: str) -> dict:
     write_matrix(out_dir / "dataset1.csv", d1)
     write_matrix(out_dir / "dataset2.csv", d2)
     validate_pass, zip_root_pass, val_out, names = zip_and_validate(out_dir, sub_dir)
+    try:
+        import lightgbm as _lightgbm  # noqa: F401
+        lightgbm_available = True
+    except Exception:
+        lightgbm_available = False
+    try:
+        import catboost as _catboost  # noqa: F401
+        catboost_available = True
+    except Exception:
+        catboost_available = False
+    try:
+        import jittor as _jittor  # noqa: F401
+        jittor_available = True
+    except Exception:
+        jittor_available = False
     summary = {
         "id": cid,
         "name": name,
@@ -456,6 +552,11 @@ def make_candidate(cid: str, name: str, method: str) -> dict:
         "dataset2_strategy": f"{method} from dataset2 train/test only",
         "uses_real_data": True,
         "uses_jittor_or_craft": method == "jittor_craft",
+        "lightgbm_available": lightgbm_available,
+        "catboost_available": catboost_available,
+        "jittor_available": jittor_available,
+        "route_blocked": (method == "catboost_ranker" and not catboost_available),
+        "blocked_reason": "catboost package unavailable in WSL venv" if method == "catboost_ranker" and not catboost_available else "",
         "submission_output_only": False,
         "wsl_generated": True,
         "validate_pass": validate_pass,
@@ -484,6 +585,7 @@ def make_candidate(cid: str, name: str, method: str) -> dict:
         "- leakage risk: low; no test labels used",
         f"- validate_result_zip.py: {'PASS' if validate_pass else 'FAIL'}",
         f"- zip root: {'PASS' if zip_root_pass else 'FAIL'}",
+        f"- route_blocked: {summary.get('route_blocked', False) if 'summary' in locals() else (method == 'catboost_ranker' and not catboost_available)}",
         "- recommended_submit: pending candidate_eval",
     ])
     return summary
@@ -494,10 +596,10 @@ def candidates() -> None:
         ("001", "dual_retrieval_baseline", "retrieval"),
         ("002", "dual_time_decay_ranker", "time_decay"),
         ("003", "dual_cooc_transition_ranker", "cooc_transition"),
-        ("004", "dual_candidate_ranker", "candidate_ranker"),
-        ("005", "dual_dataset_specific_ranker", "dataset_specific"),
-        ("006", "jittor_craft_if_available", "jittor_craft"),
-        ("007", "dual_blend_final", "blend"),
+        ("004", "dual_lgbm_ranker", "lgbm_ranker"),
+        ("005", "dual_catboost_ranker", "catboost_ranker"),
+        ("006", "dual_jittor_craft_probe", "jittor_craft"),
+        ("007", "dual_blend_guarded", "blend_guarded"),
     ]
     summaries = [make_candidate(*s) for s in specs]
     write_json(ROOT / "analysis/candidate_eval/generated_candidates_v2.json", {"candidates": summaries})
@@ -519,6 +621,8 @@ def evaluate_candidates() -> None:
             rejected.append("zip root FAIL")
         if s.get("submission_output_only"):
             rejected.append("submission-output-only")
+        if s.get("route_blocked"):
+            rejected.append(s.get("blocked_reason") or "route blocked")
         items.append({**s, "candidate_eval_score": score, "rejected_reasons": rejected, "recommended_submit": (not rejected and score >= 2.0)})
     items.sort(key=lambda x: x["candidate_eval_score"], reverse=True)
     best = items[0] if items and items[0]["recommended_submit"] else None

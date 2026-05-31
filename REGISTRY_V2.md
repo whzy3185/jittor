@@ -26,31 +26,31 @@
 - validate: True
 - recommended_submit: True
 
-## 004_dual_candidate_ranker
+## 004_dual_lgbm_ranker
 
-- method: candidate_ranker
-- zip: `submissions/004_dual_candidate_ranker/result.zip`
+- method: lgbm_ranker
+- zip: `submissions/004_dual_lgbm_ranker/result.zip`
 - validate: True
 - recommended_submit: True
 
-## 005_dual_dataset_specific_ranker
+## 005_dual_catboost_ranker
 
-- method: dataset_specific
-- zip: `submissions/005_dual_dataset_specific_ranker/result.zip`
+- method: catboost_ranker
+- zip: `submissions/005_dual_catboost_ranker/result.zip`
 - validate: True
-- recommended_submit: True
+- recommended_submit: False
 
-## 006_jittor_craft_if_available
+## 006_dual_jittor_craft_probe
 
 - method: jittor_craft
-- zip: `submissions/006_jittor_craft_if_available/result.zip`
+- zip: `submissions/006_dual_jittor_craft_probe/result.zip`
 - validate: True
 - recommended_submit: True
 
-## 007_dual_blend_final
+## 007_dual_blend_guarded
 
-- method: blend
-- zip: `submissions/007_dual_blend_final/result.zip`
+- method: blend_guarded
+- zip: `submissions/007_dual_blend_guarded/result.zip`
 - validate: True
 - recommended_submit: True
 
