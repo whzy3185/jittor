@@ -1,44 +1,32 @@
-# Large/generated competition artifacts
-data/
-outputs/
-submissions/
-checkpoints/
-logs/
-
-# Python/runtime caches
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-
-# Environments and local caches
-.venv/
-venv/
-env/
-.env
-.jittor*
-*.cache
-
-# Model/checkpoint/binary artifacts
-*.pkl
-*.pt
-*.pth
-*.bin
-*.onnx
+# data and large outputs
+data/official_raw_recovered/
+official_data_recheck/downloads/
+official_data_recheck/extracted_wsl/
+official_data_recheck/extracted/
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
 *.npy
 *.npz
+*.pkl
+*.parquet
 
-# Archives generated for transfer/submission
-*.zip
-*.tar
-*.tar.gz
-*.7z
+# generated outputs
+outputs/
+submissions/
+_legacy_experiments/
+_local_trash_after_github_push/
+.jittor*
+.cache/
+__pycache__/
+.ipynb_checkpoints/
+*.tmp
+*.temp
 
-# OS/editor noise
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
+# secrets
+*.cookie
+*.token
+*.secret
+.env

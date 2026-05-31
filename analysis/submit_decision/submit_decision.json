@@ -1,0 +1,14 @@
+{
+  "decision": "do_not_submit",
+  "submitted_candidate": "",
+  "submit_target": "submissions/003_dual_cooc_transition_ranker/result.zip",
+  "request_id": "",
+  "online_score": null,
+  "online_status": "not_submitted",
+  "current_best": {
+    "name": "177b_w010_top1_guard",
+    "score": 1.2170530157111252
+  },
+  "reason": "Best V2 baseline is valid, but this restart changes both datasets and lacks online evidence; manual review recommended before submission.",
+  "auto_submit_attempted": false
+}

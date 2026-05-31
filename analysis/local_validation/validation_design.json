@@ -1,0 +1,22 @@
+{
+  "dataset1": {
+    "split_method": "time_tail_holdout",
+    "train_size": 607946,
+    "valid_size": 82902,
+    "time_range": [
+      0,
+      129595289
+    ],
+    "leakage_risk": "low_if_history_cut_is_respected"
+  },
+  "dataset2": {
+    "split_method": "split_based",
+    "train_size": 1995088,
+    "valid_size": 266195,
+    "time_range": [
+      955497600,
+      1296259200
+    ],
+    "leakage_risk": "low_if_history_cut_is_respected"
+  }
+}

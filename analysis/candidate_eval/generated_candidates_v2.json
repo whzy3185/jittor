@@ -1,0 +1,165 @@
+{
+  "candidates": [
+    {
+      "id": "001",
+      "name": "dual_retrieval_baseline",
+      "method": "retrieval",
+      "zip": "submissions/001_dual_retrieval_baseline/result.zip",
+      "dataset1_strategy": "retrieval from dataset1 train/test only",
+      "dataset2_strategy": "retrieval from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/001_dual_retrieval_baseline/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9936886429786682,
+      "dataset2_entropy_mean": 0.9932488203048706
+    },
+    {
+      "id": "002",
+      "name": "dual_time_decay_ranker",
+      "method": "time_decay",
+      "zip": "submissions/002_dual_time_decay_ranker/result.zip",
+      "dataset1_strategy": "time_decay from dataset1 train/test only",
+      "dataset2_strategy": "time_decay from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/002_dual_time_decay_ranker/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9950247406959534,
+      "dataset2_entropy_mean": 0.9941713213920593
+    },
+    {
+      "id": "003",
+      "name": "dual_cooc_transition_ranker",
+      "method": "cooc_transition",
+      "zip": "submissions/003_dual_cooc_transition_ranker/result.zip",
+      "dataset1_strategy": "cooc_transition from dataset1 train/test only",
+      "dataset2_strategy": "cooc_transition from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/003_dual_cooc_transition_ranker/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9936560988426208,
+      "dataset2_entropy_mean": 0.9930853843688965
+    },
+    {
+      "id": "004",
+      "name": "dual_candidate_ranker",
+      "method": "candidate_ranker",
+      "zip": "submissions/004_dual_candidate_ranker/result.zip",
+      "dataset1_strategy": "candidate_ranker from dataset1 train/test only",
+      "dataset2_strategy": "candidate_ranker from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/004_dual_candidate_ranker/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9951565861701965,
+      "dataset2_entropy_mean": 0.9943113923072815
+    },
+    {
+      "id": "005",
+      "name": "dual_dataset_specific_ranker",
+      "method": "dataset_specific",
+      "zip": "submissions/005_dual_dataset_specific_ranker/result.zip",
+      "dataset1_strategy": "dataset_specific from dataset1 train/test only",
+      "dataset2_strategy": "dataset_specific from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/005_dual_dataset_specific_ranker/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9941593408584595,
+      "dataset2_entropy_mean": 0.9943376183509827
+    },
+    {
+      "id": "006",
+      "name": "jittor_craft_if_available",
+      "method": "jittor_craft",
+      "zip": "submissions/006_jittor_craft_if_available/result.zip",
+      "dataset1_strategy": "jittor_craft from dataset1 train/test only",
+      "dataset2_strategy": "jittor_craft from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": true,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/006_jittor_craft_if_available/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9951754808425903,
+      "dataset2_entropy_mean": 0.9943571090698242
+    },
+    {
+      "id": "007",
+      "name": "dual_blend_final",
+      "method": "blend",
+      "zip": "submissions/007_dual_blend_final/result.zip",
+      "dataset1_strategy": "blend from dataset1 train/test only",
+      "dataset2_strategy": "blend from dataset2 train/test only",
+      "uses_real_data": true,
+      "uses_jittor_or_craft": false,
+      "submission_output_only": false,
+      "wsl_generated": true,
+      "validate_pass": true,
+      "zip_root_pass": true,
+      "zip_names": [
+        "dataset1.csv",
+        "dataset2.csv"
+      ],
+      "validate_output": "{'zip': 'submissions/007_dual_blend_final/result.zip', 'valid': True, 'files': {'dataset1.csv': (61051, 100), 'dataset2.csv': (153420, 100)}}",
+      "dataset1_rows": 61051,
+      "dataset2_rows": 153420,
+      "dataset1_entropy_mean": 0.9951624274253845,
+      "dataset2_entropy_mean": 0.9943116903305054
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "remote": "origin\tgit@github.com:whzy3185/jittor.git (fetch)\norigin\tgit@github.com:whzy3185/jittor.git (push)\n",
+  "branch_before": "main",
+  "large_files_blocked": true,
+  "large_files": [
+    "./data/cache/v2_dataset2_feature_bank.npz",
+    "./official_data_recheck/extracted/data_A (1)/dataset2/test.csv"
+  ],
+  "official_data_uploaded": false
+}

@@ -1,0 +1,21 @@
+{
+  "task_type": "temporal bipartite graph candidate ranking",
+  "input": {
+    "dataset1_train": "src,dst,time",
+    "dataset1_test": "src,time,c1..c100",
+    "dataset2_train": "src,dst,time,split",
+    "dataset2_test": "src,time,c1..c100"
+  },
+  "output": {
+    "dataset1.csv": "100 scores per row",
+    "dataset2.csv": "100 scores per row"
+  },
+  "objective": "rank 100 candidate dst values for each given src,time row",
+  "evidence": [
+    "TGN",
+    "JODIE",
+    "TGAT",
+    "JittorGeometric",
+    "official craft_baseline"
+  ]
+}

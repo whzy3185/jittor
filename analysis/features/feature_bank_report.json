@@ -1,0 +1,32 @@
+{
+  "dataset1": {
+    "dataset": "dataset1",
+    "path": "data/cache/v2_dataset1_feature_bank.npz",
+    "rows": 61051,
+    "candidate_features": [
+      "retrieval_score",
+      "retrieval_rank",
+      "hist_score",
+      "decay_score",
+      "pair_count",
+      "dst_popularity"
+    ],
+    "missing_rate": 0.0,
+    "support_rows": 39609
+  },
+  "dataset2": {
+    "dataset": "dataset2",
+    "path": "data/cache/v2_dataset2_feature_bank.npz",
+    "rows": 153420,
+    "candidate_features": [
+      "retrieval_score",
+      "retrieval_rank",
+      "hist_score",
+      "decay_score",
+      "pair_count",
+      "dst_popularity"
+    ],
+    "missing_rate": 0.0,
+    "support_rows": 11992
+  }
+}

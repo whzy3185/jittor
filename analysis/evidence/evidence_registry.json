@@ -1,0 +1,85 @@
+{
+  "updated_at": "2026-05-31T16:02:37+08:00",
+  "entries": [
+    {
+      "source_type": "official_doc",
+      "title": "GitHub Docs: About large files on GitHub",
+      "url_or_path": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github",
+      "used_for": "GitHub sync policy",
+      "claim_supported": "large generated outputs and archives should not be committed as normal Git objects",
+      "limitations": "repository hygiene guidance only"
+    },
+    {
+      "source_type": "official_doc",
+      "title": "GitHub Docs: Adding locally hosted code to GitHub",
+      "url_or_path": "https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github",
+      "used_for": "GitHub push workflow",
+      "claim_supported": "local source code can be initialized, committed, and pushed to a remote repository",
+      "limitations": "does not decide which competition artifacts are safe to publish"
+    },
+    {
+      "source_type": "repo_doc",
+      "title": "Jittor official repository README",
+      "url_or_path": "https://github.com/Jittor/jittor",
+      "used_for": "Jittor CPU-only route",
+      "claim_supported": "Jittor is the required framework family for model experiments",
+      "limitations": "local environment must still be validated"
+    },
+    {
+      "source_type": "repo_doc",
+      "title": "JittorGeometric repository README",
+      "url_or_path": "https://github.com/Jittor/JittorGeometric",
+      "used_for": "graph learning route audit",
+      "claim_supported": "JittorGeometric supports graph machine learning experiments in the Jittor ecosystem",
+      "limitations": "not proof of leaderboard improvement"
+    },
+    {
+      "source_type": "paper",
+      "title": "Temporal Graph Networks for Deep Learning on Dynamic Graphs",
+      "url_or_path": "https://arxiv.org/abs/2006.10637",
+      "used_for": "task definition and temporal graph modeling route",
+      "claim_supported": "src-dst-time interactions fit temporal graph modeling assumptions",
+      "limitations": "paper direction only; no direct competition guarantee"
+    },
+    {
+      "source_type": "paper",
+      "title": "JODIE: Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks",
+      "url_or_path": "https://arxiv.org/abs/1908.01207",
+      "used_for": "dynamic user/item embedding route",
+      "claim_supported": "temporal interaction networks can be modeled with dynamic trajectories",
+      "limitations": "requires careful local validation and no leakage"
+    },
+    {
+      "source_type": "paper",
+      "title": "TGAT: Inductive Representation Learning on Temporal Graphs",
+      "url_or_path": "https://arxiv.org/abs/2002.07962",
+      "used_for": "time encoding and temporal graph attention route",
+      "claim_supported": "time-aware graph representation is a relevant modeling family",
+      "limitations": "not implemented as primary V2 candidate yet"
+    },
+    {
+      "source_type": "local_experiment",
+      "title": "177b > 143",
+      "url_or_path": "BEST_KNOWN_SUBMISSION_CN.md",
+      "used_for": "V2 reference baseline",
+      "claim_supported": "real retrieval top1-guard around 143 improved online score to 1.2170530157111252",
+      "limitations": "single online observation"
+    },
+    {
+      "source_type": "local_experiment",
+      "title": "199 < 177b",
+      "url_or_path": "analysis/200_wsl_final_submit_decision.json",
+      "used_for": "avoid global retrieval amplification",
+      "claim_supported": "199 regressed to 1.2168948054252828",
+      "limitations": "only rejects this global refinement recipe"
+    },
+    {
+      "source_type": "local_experiment",
+      "title": "raw 168 top1 change too high",
+      "url_or_path": "analysis/168_real_retrieval_cooccurrence_report.json",
+      "used_for": "guard retrieval top1 changes",
+      "claim_supported": "raw real retrieval needs guards before submission",
+      "limitations": "risk heuristic, not label proof"
+    }
+  ]
+}
